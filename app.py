@@ -1,3 +1,105 @@
-import streamlit as st 
+import streamlit as st
+import openai  # for chatbot implementation (replace with your API key)
 
-st.write("hello world")
+# Sidebar or header with contact info
+st.sidebar.title("Contact Information")
+st.sidebar.write("""
+**Sundareswar Pullela**  
+📞 (458)272-7796  
+📧 [psundareswar@gmail.com](mailto:psundareswar@gmail.com)  
+💼 [LinkedIn](https://linkedin.com/in/psundareswar)  
+📂 [GitHub](https://github.com/sundareswarpullela)
+""")
+
+# Main content of the portfolio
+st.title("Sundareswar Pullela's AI & ML Portfolio")
+st.write("""
+AI and Machine Learning Engineer with expertise in developing and deploying scalable AI models, fine-tuning large language models (LLMs), and optimizing machine learning pipelines.  
+Graduating with an M.Sc. in Computer Science from Oregon State University in December 2024.
+""")
+
+# Education Section
+st.header("Education")
+st.write("""
+**Master of Science (M.Sc.) in Computer Science**  
+Oregon State University (Expected Dec 2024)  
+- GPA: 3.7/4.0  
+- Minor in AI (Coursework: Artificial Intelligence, Deep Learning, Machine Learning, etc.)
+
+**Bachelor of Technology (B.Tech.) in Computer Science**  
+Raghu Engineering College (2018 - 2022)  
+- GPA: 8.9/10.0  
+- Coursework: Data Structures, Computer Networks, Object-Oriented Programming
+""")
+
+# Skills Section
+st.header("Technical Skills")
+st.write("""
+- **AI/ML Tools**: Fine-Tuning LLMs (GPT-4, Llama-3), OpenAI API, LangChain, MLFlow  
+- **Programming Languages**: Python, R, C++, Java, SQL, Neo4j Cypher  
+- **Cloud & DevOps**: Docker, Kubernetes, AWS, GCP, Azure  
+- **Web Technologies**: HTML, CSS, JavaScript, Angular, Django, RESTful APIs
+""")
+
+# Work Experience Section
+st.header("Work Experience")
+st.write("""
+**Graduate Research Assistant, Oregon State University** (Sept 2022 - Present)  
+- Developed large-scale biomedical knowledge graphs with sub-second response times using Neo4j on AWS.
+- Streamlined deployment pipelines, reducing graph generation time by 50%.
+
+**ML Technology Full-Stack Intern, RIA Advisory** (Jun 2023 - Sept 2023)  
+- Developed an end-to-end machine learning pipeline for financial services applications, increasing model accuracy by 10%.
+
+**Software Developer Intern, Juspay Technologies** (Sept 2021 - Apr 2022)  
+- Developed secure digital payment solutions for major clients, handling over $20 million in revenue.
+
+**Machine Learning Research Intern, Akrivia Automation** (Dec 2020 - Feb 2021)  
+- Created advanced text parsing algorithms, increasing accuracy by 90%.
+""")
+
+# Projects Section
+st.header("Projects")
+st.write("""
+**RADIANT Rare Disease Chat**  
+A QA system utilizing fine-tuned LLaMa-3.1 70B parameter LLM for answering questions about rare genetic diseases.  
+[Project Demo](https://radiant.rarepath.ai)
+
+**Post-training Quantization of Vision Language Model**  
+Implemented PTQ4CLIP, improving quantized vision-language model performance.  
+[Project Report](https://github.com/VLQuant/PTQ4CLIP/blob/main/Post_Training_Quantization_on_the_CLIP_Vision_Language_Model.pdf)
+
+**Facial Tracking Accessibility Control**  
+Developed a prototype enabling individuals with disabilities to control a computer mouse using facial movements.  
+[GitHub Link](https://github.com/sundareswarpullela/AccessibilityFT)
+""")
+
+# Publications Section
+st.header("Publications")
+st.write("""
+**Machine Learning Techniques for Heart Disease Prediction**  
+Published in IJSTRE, Nov 2019. Achieved 98% accuracy for coronary heart disease risk prediction.
+""")
+
+# Chat Box Section
+st.header("Ask Me Anything!")
+
+# Initialize conversation history
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+
+def get_response_from_chatbot(question):
+    response = openai.Completion.create(
+        engine="gpt-3.5-turbo",  # or "gpt-3.5-turbo" or "gpt-4" if available
+        prompt=question,
+        max_tokens=100
+    )
+    return response.choices[0].text.strip()
+
+def ask_question():
+    user_question = st.text_input("Ask a question about my profile:")
+    if st.button("Send"):
+        # Here you'd normally integrate with OpenAI or another backend
+        st.session_state.messages.append({"role": "user", "content": user_question})
+        response = get_response_from_chatbot(user_question)
+        st.session_state.messages.append({"role": "bot", "content": response})
