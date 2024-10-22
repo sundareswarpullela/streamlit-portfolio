@@ -94,6 +94,7 @@ def fetch_latest_resume_details():
     reader = PdfReader("../resume.pdf")
     number_of_pages = len(reader.pages)
     for p_no in range(number_of_pages):
+        page = reader.pages[p_no]
         text += page.extract_text()
     return text
 
