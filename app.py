@@ -109,7 +109,7 @@ def get_response_from_chatbot(question):
                 "content": '''You're an AI assistant designed to answer questions about Sundareswar Pullela's resume. 
                 Do not answer questions about anything else except his resume and profile. 
                 Summarize the response into one paragraph ro a few bulleted points.
-                Do not make anything up. 
+                Do not make anything up and get your facts from the resume only. 
                 '''
             },
             {
