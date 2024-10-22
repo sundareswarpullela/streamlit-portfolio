@@ -1,6 +1,5 @@
 import streamlit as st
 import openai  # for chatbot implementation (replace with your API key)
-import pypdf2
 
 # Sidebar or header with contact info
 # st.sidebar.title("Contact Information")
