@@ -94,7 +94,7 @@ def fetch_latest_resume_details():
     reader = PdfReader("../resume.pdf")
     number_of_pages = len(reader.pages)
     for p_no in range(number_of_pages):
-        text.append(page.extract_text())
+        text += page.extract_text()
     return text
 
 def get_response_from_chatbot(question):
