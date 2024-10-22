@@ -119,6 +119,8 @@ def get_response_from_chatbot(question):
             }
         ]
     )
+    return completion.choices[0].message
+    
 
 
 def ask_question():
@@ -126,8 +128,7 @@ def ask_question():
     if st.button("Send"):
         # Here you'd normally integrate with OpenAI or another backend
         st.session_state.messages.append({"role": "user", "content": user_question})
-        response = get_response_from_chatbot(user_question)
-        msg = response.choices[0].message.content
+        msg = get_response_from_chatbot(user_question)
         st.session_state.messages.append({"role": "assistant", "content": msg})
         st.chat_message("assistant").write(msg)
 
