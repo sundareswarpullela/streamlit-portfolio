@@ -119,7 +119,7 @@ def get_response_from_chatbot(question):
             }
         ]
     )
-    return completion.choices[0].message
+    return completion.choices[0].message.content
     
 
 
