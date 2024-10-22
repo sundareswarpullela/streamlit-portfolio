@@ -1,5 +1,5 @@
 import streamlit as st
-import openai  # for chatbot implementation (replace with your API key)
+from openai import OpenAI  # for chatbot implementation (replace with your API key)
 
 # Sidebar or header with contact info
 # st.sidebar.title("Contact Information")
