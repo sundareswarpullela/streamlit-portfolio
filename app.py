@@ -114,7 +114,7 @@ def get_response_from_chatbot(question):
             },
             {
                 "role": "system",
-                "content": f"Here are the details of my resume. {fetch_latest_resume_details()}"
+                "content": f"Here are the details of Sundareswar Pullela's resume. {fetch_latest_resume_details()}"
             },
             {
                 
