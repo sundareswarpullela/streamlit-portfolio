@@ -127,7 +127,9 @@ def ask_question():
         # Here you'd normally integrate with OpenAI or another backend
         st.session_state.messages.append({"role": "user", "content": user_question})
         response = get_response_from_chatbot(user_question)
-        st.session_state.messages.append({"role": "bot", "content": response})
+        msg = response.choices[0].message.content
+        st.session_state.messages.append({"role": "assistant", "content": msg})
+        st.chat_message("assistant").write(msg)
 
 ask_question()
 # if "messages" not in st.session_state:
