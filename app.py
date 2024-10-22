@@ -91,7 +91,7 @@ if "messages" not in st.session_state:
 def fetch_latest_resume_details():
     from PyPDF2 import PdfReader
     text = ""
-    reader = PdfReader("~/resume.pdf")
+    reader = PdfReader("../resume.pdf")
     number_of_pages = len(reader.pages)
     for p_no in range(number_of_pages):
         text.append(page.extract_text())
