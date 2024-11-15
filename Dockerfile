@@ -9,11 +9,11 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-RUN git clone https://github.com/sundareswarpullela/streamlit-portfolio/ .
-
-RUN pwd
+COPY . .
 
 RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip install streamlit
+
 
 EXPOSE 8501
 
