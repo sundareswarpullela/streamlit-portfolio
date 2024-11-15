@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN git clone https://github.com/sundareswarpullela/streamlit-portfolio/ .
 
+RUN pwd
 
 RUN pip3 install --no-cache-dir -r requirements.txt
 
